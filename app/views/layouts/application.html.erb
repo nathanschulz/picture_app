@@ -4,21 +4,23 @@
   <title>PictureApp</title>
   
   <%= stylesheet_link_tag    'application'%>
-  <%= javascript_include_tag 'application'%>
+  <%= javascript_include_tag 'application'%> 
+  
+  <%= csrf_meta_tags %>
 
   
-  <%= filepicker_js_include_tag %>
-  <%= csrf_meta_tags %>
 </head>
+  
+ <script 
+   type="text/javascript"
+   src="//api.filepicker.io/v1/filepicker.js">
+ </script>
+ 
 
-  <script 
-    type="text/javascript"
-    src="//api.filepicker.io/v1/filepicker.js">
-  </script>
 
 <body>
 
-  <nav class="navbar navbar-default" role="navigation">
+   <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Instagrad</a>

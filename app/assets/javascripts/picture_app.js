@@ -4,9 +4,11 @@ window.PictureApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-  	var router = new PictureApp.Routers.Main({
-  		$rootEl: $('div.main')
-  	})
+		filepicker.setKey('A2KqNetbBTzyDxWFrOclSz')
+		new PictureApp.Routers.Main({
+		  	$rootEl: $('div.main_content')
+		  })
+		
 		Backbone.history.start();
   }
 };

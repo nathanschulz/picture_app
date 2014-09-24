@@ -1,5 +1,4 @@
-class Api::PostsController < ApplicationController
-  
+class PostsController < ApplicationController
   
   def index
     render json: current_user.posts
@@ -14,7 +13,7 @@ class Api::PostsController < ApplicationController
     post = current_user.posts.new(post_params)
     
     if post.save
-      redirect_to user_url(current_user)
+      render json: post
     else
       flash[:errors] = post.errors.full_messages
       redirect_to user_url(current_user)

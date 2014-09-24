@@ -1,15 +1,8 @@
-Hey Man!
-
-<%= form_for @post do |f| %>
-  <div>
-    <%= f.label :filepicker_url, "Upload Your Avatar:" %>
-    <%= f.filepicker_field :filepicker_url %> <!-- User#filepicker_url is a regular string column -->
-  </div>
-
-  <%= f.submit %>
-<% end %>
+<a href="#upload">Upload Picture</a>
 
 
-<%= @posts.each do |post|%>
-  <%= filepicker_image_tag post.filepicker_url, w: 200, h: 200, fit: 'clip' %>
-<% end %>
+
+<!--  <%= form_for @post do |f| %>
+    <%= f.filepicker_field :filepicker_url %>
+    <%= f.submit %>
+  <% end %> -->
