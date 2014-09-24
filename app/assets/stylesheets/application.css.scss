@@ -1,7 +1,7 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- *
+ * access key id AKIAJJDQH5XYQJFAILTQ   secret access key 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
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
@@ -18,3 +18,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  background-image: url("splash.jpg") ;
+}

@@ -8,13 +8,15 @@ class User < ActiveRecord::Base
   
   before_validation :ensure_session_token
   
+  has_many :posts
+  
   def self.generate_session_token
-    SecureRandom::urlsafe_base64
+    SecureRandom::urlsafe_base64(16)
   end
   
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)
-    return false unless user
+    return nil unless user
     return (user.is_password?(password) ? user : nil)
   end
   

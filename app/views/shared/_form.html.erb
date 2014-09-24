@@ -1,7 +1,17 @@
 
+<% if purpose == "session" %>
+  <% button_label = "Login!" %>
+  <% form_action = session_url %>
+<% else %>
+  <% button_label = "Sign Up!" %>
+  <% form_action = users_url %>
+<% end %>
 
-
-<form>
+<form action="<%= form_action %>" method="post">
+  <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
   <label for="username">Username</label>
   <input 
     type="text" 
@@ -12,4 +22,5 @@
     type="password" 
     name="user[password]" 
     id="password">
+  <input type="submit" value="<%= button_label %>">
 </form>

@@ -11,12 +11,14 @@ class UsersController < ApplicationController
       login!(@user)
       redirect_to user_url(@user) 
     else
-      flash.errors = [@user.errors.full_messages]
+      flash[:errors] = [@user.errors.full_messages]
       redirect_to new_session_url
     end
   end
   
   def show
+    @post = Post.new
+    @posts = current_user.posts
   end
   
   def destroy

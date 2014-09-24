@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'filepicker-rails'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro', github: 'laserlemon/figaro', ref: "9bbc7343f3916e73c185d071608e5ef24e9638d0"
+
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'serialize_json-rails'
@@ -29,7 +34,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'

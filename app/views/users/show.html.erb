@@ -1,0 +1,15 @@
+Hey Man!
+
+<%= form_for @post do |f| %>
+  <div>
+    <%= f.label :filepicker_url, "Upload Your Avatar:" %>
+    <%= f.filepicker_field :filepicker_url %> 
+  </div>
+
+  <%= f.submit %>
+<% end %>
+
+
+<%= @posts.each do |post|%>
+  <%= filepicker_image_tag post.filepicker_url, w: 200, h: 200, fit: 'clip' %>
+<% end %>

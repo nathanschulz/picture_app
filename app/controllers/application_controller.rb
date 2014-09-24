@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
     redirect_to root_url unless logged_in?
   end
   
+  def redirect_if_logged_in!
+    redirect_to user_url(current_user) if logged_in? 
+  end
+  
 end
