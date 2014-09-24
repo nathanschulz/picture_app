@@ -10,10 +10,17 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   },
   
   postShow: function (event) {
-    var picSpot = $('#picture-goes-here');
-    var postId = $(event.currentTarget).data('id')
-    var postUrl = this.collection.get(postId).attributes.filepicker_url
-    picSpot.html('<img src="' + postUrl + '" alt="500x500">');
+    var picSpot = $('#show-view');
+    
+    var postId = $(event.currentTarget).data('id');
+    var post = this.collection.get(postId);
+    
+    var modalView = new PictureApp.Views.PostShowView({
+      model: post
+    });
+      
+    picSpot.html(modalView.render().$el);
+        
   },
    
 	

@@ -1,10 +1,9 @@
 PictureApp.Views.PostShowView = Backbone.View.extend({
   template: JST['post/show'],
-  initialize: function (options) {
-    this.postId = options.postId;
+  initialize: function () {
   },
   render: function () {
-    var content = this.template({postId: this.postId});
+    var content = this.template({post: this.model});
     this.$el.html(content);
     return this;
   }
