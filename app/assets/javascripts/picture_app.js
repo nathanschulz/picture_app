@@ -4,7 +4,10 @@ window.PictureApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-  
+  	var router = new PictureApp.Routers.Main({
+  		$rootEl: $('div.main')
+  	})
+		Backbone.history.start();
   }
 };
 
