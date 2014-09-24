@@ -5,9 +5,9 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	
 	routes: {
 		'' : 'index',
-		'upload' : 'upload'
+		'upload' : 'upload',
 	},
-	
+
 	upload: function () {
 		var path = filepicker.pick(function(InkBlob){
 			var newPicture = new PictureApp.Models.Post({
@@ -19,14 +19,15 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 				}
 			})
 		})
+    Backbone.history.navigate('', {trigger: true});
 	},
 	
 	index: function () {
-		// PictureApp.Collections.posts.fetch();
-		// var indexView = new PictureApp.Views.IndexView({
-		// 	collection: PictureApp.Collections.posts
-		// });
-		// this._swapView(indexView);
+    PictureApp.Collections.posts.fetch();
+    var indexView = new PictureApp.Views.IndexView({
+      collection: PictureApp.Collections.posts
+    });
+		this._swapView(indexView);
 	},
 	
 	_swapView: function (view) {

@@ -6,7 +6,7 @@ window.PictureApp = {
   initialize: function() {
 		filepicker.setKey('A2KqNetbBTzyDxWFrOclSz')
 		new PictureApp.Routers.Main({
-		  	$rootEl: $('div.main_content')
+		  	$rootEl: $('div.container')
 		  })
 		
 		Backbone.history.start();
