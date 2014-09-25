@@ -1,5 +1,14 @@
-<img src="<%= post.attributes.filepicker_url %>">
-<form id="comment-form" method="some_stuff_later">
-  <textarea id="title-input" cols="30" rows="3" name="comment[body]"></textarea>
-  <button type="button" class="btn btn-primary">Comment!</button>s  
-</form>
+<button id="close-modal">&times;</button>
+
+<div id="image-container">
+  <img src="<%= post.attributes.filepicker_url %>">
+</div>
+<div id="form-container">
+  <form id="comment-form">
+    <input type="text" id="title-input" cols="30" rows="3" name="comment[body]"></textarea>
+    <button type="button" class="btn btn-primary" id="make-comment">Comment!</button>  
+  </form>
+</div>
+<% post.comments().forEach (function(comment){ %>
+  <%= comment.attributes.body %>  
+<% }) %>

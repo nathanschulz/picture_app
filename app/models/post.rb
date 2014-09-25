@@ -21,6 +21,7 @@ class Post < ActiveRecord::Base
   # after_commit :ensure_order
   #
   belongs_to :user
+  has_many :comments
   
   # def ensure_order
  #    last_post = Post.order(:created_at).last

@@ -2,11 +2,12 @@ class Api::PostsController < ApplicationController
   
   def index
     render json: current_user.posts
+    # render :index
   end
   
   def show
     @post = Post.find(params[:id])
-    render json: @post
+    render :show
   end
   
   def create

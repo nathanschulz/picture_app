@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
   
   has_many :posts
+  has_many :comments
   
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

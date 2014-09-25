@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :destroy, :show]
   namespace :api, defaults: {format: :json} do
     resources :posts
+    resources :comments, only: [:index, :create, :destroy]
   end
 
   

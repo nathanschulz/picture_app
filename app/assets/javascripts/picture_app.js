@@ -5,7 +5,7 @@ window.PictureApp = {
   Routers: {},
   initialize: function() {
 		filepicker.setKey('A2KqNetbBTzyDxWFrOclSz')
-		new PictureApp.Routers.Main({
+ 		new PictureApp.Routers.Main({
 		  	$rootEl: $('div.container')
 		  })
 		

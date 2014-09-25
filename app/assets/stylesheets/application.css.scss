@@ -22,3 +22,34 @@
 body {
   background-image: url("splash.jpg") ;
 }
+
+div#show-view {
+  background: white;
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+  display: none;
+  border: 2px solid;
+  border-radius: 20px;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+}
+
+
+div#image-container {
+  left: 25%;
+  width: 50%;
+  height: 100%;
+}
+
+div#form-container {
+  left: 25%;
+  width: 50%;
+  height: 100%;
+}
+
+div#show-view img {
+  position: relative;
+
+}
