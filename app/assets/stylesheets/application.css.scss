@@ -38,18 +38,18 @@ div#show-view {
 
 
 div#image-container {
-  left: 25%;
+  display: inline-block;
   width: 50%;
+  left: 25%;
   height: 100%;
+  padding: 10px;
 }
 
 div#form-container {
-  left: 25%;
-  width: 50%;
+  display: inline-block;
   height: 100%;
 }
 
 div#show-view img {
-  position: relative;
 
 }

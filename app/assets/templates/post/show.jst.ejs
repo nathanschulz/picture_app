@@ -1,11 +1,10 @@
-<button id="close-modal">&times;</button>
-
+<button type="button" class="close" id="close-modal">&times;</button>
 <div id="image-container">
   <img src="<%= post.attributes.filepicker_url %>">
 </div>
 <div id="form-container">
   <form id="comment-form">
-    <input type="text" id="title-input" cols="30" rows="3" name="comment[body]"></textarea>
+    <input type="text" id="title-input">
     <button type="button" class="btn btn-primary" id="make-comment">Comment!</button>  
   </form>
 </div>

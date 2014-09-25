@@ -23,7 +23,7 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	},
 	
 	index: function () {
-    PictureApp.Collections.posts.fetch();
+    // PictureApp.Collections.posts.fetch();
     var indexView = new PictureApp.Views.IndexView({
       collection: PictureApp.Collections.posts
     });

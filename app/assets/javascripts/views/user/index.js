@@ -2,9 +2,20 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 	template: JST['user/index'],
   
   initialize: function () {
-	  this.listenTo(this.collection, 'sync', this.render);
+    // this.myFetch(this.collection);
+    var that = this
+    this.collection.fetch({
+      success: function () {
+        that.render()
+      }})
+    
+    this.listenTo(this.collection, 'myFetch', this.render);
     
 	},
+  
+  myFetch: function(collection) {
+    collection.fetch();
+  },
   
   events: {
     'click .thumbnail' : 'postShow'
@@ -17,7 +28,7 @@ PictureApp.Views.IndexView = Backbone.View.extend({
     
     var postId = $(event.currentTarget).data('id');
     var post = this.collection.get(postId);
-    // post.fetch();
+    post.fetch();
     var modalView = new PictureApp.Views.PostShowView({
       model: post
     });
