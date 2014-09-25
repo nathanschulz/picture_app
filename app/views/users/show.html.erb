@@ -1,3 +1,7 @@
-<a href="#upload">Upload Picture</a>
+<input id="user-id" type="hidden" data-user-id="<%= @user.id %>">
+
+<% if current_user.id == @page_id %>
+  <a href="#upload">Upload Picture</a>
+<% end %>
 
 

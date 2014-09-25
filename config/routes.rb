@@ -4,10 +4,15 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :destroy, :show]
+  resources :users, only: [:new, :create, :destroy, :show] do
+  end
+  
+  
+  
   namespace :api, defaults: {format: :json} do
-    resources :posts
     resources :comments, only: [:index, :create, :destroy]
+    resources :posts
+    resources :users, only: [:show]
   end
 
   

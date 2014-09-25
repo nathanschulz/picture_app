@@ -23,6 +23,28 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   
+  has_many(
+    :followings,
+    primary_key: :id,
+    foreign_key: :followee_id,
+    class_name: "Following")
+    
+  has_many(
+    :followedsings,
+    primary_key: :id,
+    foreign_key: :follower_id,
+    class_name: "Following")
+    
+  has_many(
+    :followers,
+    through: :followings,
+    source: :follower)
+    
+  has_many(
+    :followeds,
+    through: :followedsings,
+    source: :followee)
+  
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end
@@ -34,6 +56,10 @@ class User < ActiveRecord::Base
     return user if user.is_password?(password)
     return nil
    end
+   
+  def is_following?(user)
+    this.followeds.exists?(user)
+  end
   
   def password=(password)
     @password = password

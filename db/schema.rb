@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924183323) do
+ActiveRecord::Schema.define(version: 20140925181734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,23 @@ ActiveRecord::Schema.define(version: 20140924183323) do
     t.integer  "user_id",    null: false
     t.integer  "post_id",    null: false
     t.text     "body",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "followings", force: true do |t|
+    t.integer  "follower_id"
+    t.integer  "followee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.text     "body",                               null: false
+    t.string   "title"
+    t.integer  "sender_id",                          null: false
+    t.integer  "sendee_id",                          null: false
+    t.boolean  "is_follow_request?", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

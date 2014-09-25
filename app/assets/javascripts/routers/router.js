@@ -23,9 +23,10 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	},
 	
 	index: function () {
-    // PictureApp.Collections.posts.fetch();
+		var userId = $('#user-id').data('user-id');
+    var user = PictureApp.Collections.users.getOrFetch(userId);
     var indexView = new PictureApp.Views.IndexView({
-      collection: PictureApp.Collections.posts
+      model: user
     });
 		this._swapView(indexView);
 	},

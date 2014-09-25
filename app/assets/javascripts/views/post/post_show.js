@@ -33,6 +33,7 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
   render: function () {
     var content = this.template({post: this.model});
     this.$el.html(content);
+		debugger
     return this;
   }
 })

@@ -16,8 +16,9 @@ class UsersController < ApplicationController
   end
   
   def show
-    @post = Post.new
-    @posts = current_user.posts
+    @page_id = params[:id].to_i
+    @user = User.find(@page_id)
+    # render json: user.posts
   end
   
   def destroy

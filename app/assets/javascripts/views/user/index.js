@@ -2,20 +2,9 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 	template: JST['user/index'],
   
   initialize: function () {
-    // this.myFetch(this.collection);
-    var that = this
-    this.collection.fetch({
-      success: function () {
-        that.render()
-      }})
-    
-    this.listenTo(this.collection, 'myFetch', this.render);
-    
+    this.listenTo(this.model, 'sync', this.render);
 	},
-  
-  myFetch: function(collection) {
-    collection.fetch();
-  },
+
   
   events: {
     'click .thumbnail' : 'postShow'
@@ -27,8 +16,8 @@ PictureApp.Views.IndexView = Backbone.View.extend({
     var picSpot = this.$('#show-view');
     
     var postId = $(event.currentTarget).data('id');
-    var post = this.collection.get(postId);
-    post.fetch();
+    // var post = this.collection.get(postId);
+    var post = PictureApp.Collections.posts.getOrFetch(postId);
     var modalView = new PictureApp.Views.PostShowView({
       model: post
     });
@@ -37,10 +26,10 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   },
 	
 	render: function () {
-		var content = this.template({posts: this.collection});
+		var content = this.template({user: this.model});
 		this.$el.html(content);
-   
-		return this;
+		debugger
+   	return this;
 	}
 })
 
