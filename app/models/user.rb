@@ -44,6 +44,18 @@ class User < ActiveRecord::Base
     :followeds,
     through: :followedsings,
     source: :followee)
+    
+  has_many(
+    :sent_messages,
+    primary_key: :id,
+    foreign_key: :sender_id,
+    class_name: "Message")
+    
+  has_many(
+    :received_messages,
+    primary_key: :id,
+    foreign_key: :sendee_id,
+    class_name: "Message")
   
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

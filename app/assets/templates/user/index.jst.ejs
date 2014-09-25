@@ -1,6 +1,6 @@
 
 <div class="row">
-  <% user.attributes.posts.forEach(function(post){ %>
+  <% user.posts().each(function(post){ %>
     <div class="col-xs-3">
       <a 
         href="#cool-modal" 
@@ -8,11 +8,11 @@
         data-id="<%= post.id %>"
         data-toggle="modal"
         class="btn btn-primary">
-        <img src="<%= post.filepicker_url %>" alt="200x200">
+        <img src="<%= post.get('filepicker_url') %>" alt="200x200">
       </a>
     </div>
   <% }) %>
 </div>
-
-
+<button id="message-button">Send Message</button>
+<div id="new-message-view"></div>
  <div id="show-view"></div>

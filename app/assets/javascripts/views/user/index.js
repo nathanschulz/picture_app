@@ -3,12 +3,33 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+		$('body').on('click', '#message-button', this.sendMessage.bind(this));
+		$('body').on('click', '#read-messages-button', this.readMessages.bind(this));
 	},
 
   
   events: {
-    'click .thumbnail' : 'postShow'
-  },
+    'click .thumbnail' : 'postShow',
+		'click #message-button' : 'sendMessage',
+		'click #read-messages' : 'readMessages'
+	},
+	
+	readMessages: function () {
+		var sentMessages = PictureApp.Collections.sentMessages.fetch();
+		var receivedMessages = PictureApp.Collections.receivedMessages.fetch();
+		var messageView = new PictureApp.Views.MessageView({
+			collection: receivedMessages,
+			sentMessages: sentMessages
+		})
+		
+	},
+		
+	sendMessage: function () {
+		event.preventDefault();		
+		var messageView = new PictureApp.Views.MessageWrite();		
+		$('div#new-message-view').html(messageView.render().$el);
+		$('div#new-message-view').css("display", "block");		
+	},
   
   postShow: function (event) {
     event.preventDefault();
@@ -28,7 +49,7 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 	render: function () {
 		var content = this.template({user: this.model});
 		this.$el.html(content);
-		debugger
+		console.log('rendering')
    	return this;
 	}
 })

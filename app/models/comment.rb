@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  post_id    :integer          not null
+#  body       :text             not null
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Comment < ActiveRecord::Base
   
   validates :body, presence: true

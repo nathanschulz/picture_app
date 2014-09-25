@@ -1,9 +1,0 @@
-
-<img src="<%= post.attributes.filepicker_url %>">
-<form id="comment-form">
-  <textarea id="title-input" cols="30" rows="3" name="comment[body]"></textarea>
-  <button type="button" class="btn btn-primary" id="make-comment">Comment!</button>  
-</form>
-<% post.comments().forEach (function(comment){ %>
-  <%= comment.attributes.body %>  
-<% }) %>
