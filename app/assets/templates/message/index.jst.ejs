@@ -1,0 +1,22 @@
+Your Messages
+
+<button type="button" class="close" id="close-messages">&times;</button>
+
+<ul>
+  <% receivedMessages.each(function (message) { %>
+    <% if (!message.get('recipient_deleted?')) { %>
+      <li><%= message.get('title') %> <a data-id="<%= message.id %>" class="delete-message">delete</a></li>
+    <% } %>
+  
+  <% }) %>
+</ul>
+
+Sent Messages
+<ul>
+  <% sentMessages.each(function (message) { %>
+    <% if (!message.get('sender_deleted?')) { %>
+      <li><%= message.get('title') %> <a data-id="<%= message.id %>" class="delete-message">delete</a></li>
+    <% } %>
+  <% }) %>
+</ul>
+

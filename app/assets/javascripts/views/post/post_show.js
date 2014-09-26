@@ -3,7 +3,8 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
   className: 'post-show',
   initialize: function () {
     this.modelId = this.model.attributes.id;
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync change', this.render);
+		this.listenTo(this.model.comments(), 'sync', this.render)
     // $('body').on('click', '#make-comment', this.makeComment.bind(this));
   },
   
@@ -24,10 +25,12 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
     var newComment = new PictureApp.Models.Comment({
       comment: {body: commentBody, post_id: this.modelId}
     });
+		var that = this;
     newComment.save({},
       {success: function () {
-        alert('congratulations!')
-      }})
+				this.model.comments().add(newComment);
+			}.bind(this)        
+     })
   },
   render: function () {
     var content = this.template({post: this.model});

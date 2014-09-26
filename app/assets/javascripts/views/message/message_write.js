@@ -23,7 +23,7 @@ PictureApp.Views.MessageWrite = Backbone.View.extend({
 		var messageRecipient = $('#message-recipient').val();
 		var messageSubject = $('#message-subject').val();
 		var sender = $('#current-user-id').data('current-user-id');
-		var newMessage = new PictureApp.Models.Message({
+		var newMessage = new PictureApp.Models.SentMessage({
 			message: {body: messageBody, 
 				sender_id: sender, 
 				sendee_id: messageRecipient,

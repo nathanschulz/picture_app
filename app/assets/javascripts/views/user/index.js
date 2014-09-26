@@ -10,18 +10,17 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   
   events: {
     'click .thumbnail' : 'postShow',
-		'click #message-button' : 'sendMessage',
-		'click #read-messages' : 'readMessages'
 	},
 	
 	readMessages: function () {
-		var sentMessages = PictureApp.Collections.sentMessages.fetch();
-		var receivedMessages = PictureApp.Collections.receivedMessages.fetch();
-		var messageView = new PictureApp.Views.MessageView({
-			collection: receivedMessages,
-			sentMessages: sentMessages
-		})
-		
+		PictureApp.Collections.sentMessages.fetch();
+		PictureApp.Collections.receivedMessages.fetch();
+		var messageView = new PictureApp.Views.MessageIndex({
+			collection: PictureApp.Collections.receivedMessages,
+			sentMessages: PictureApp.Collections.sentMessages
+		});
+		$('div#messages-view').html(messageView.render().$el);
+		$('div#messages-view').css("display", "block");	
 	},
 		
 	sendMessage: function () {
@@ -49,7 +48,6 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 	render: function () {
 		var content = this.template({user: this.model});
 		this.$el.html(content);
-		console.log('rendering')
    	return this;
 	}
 })

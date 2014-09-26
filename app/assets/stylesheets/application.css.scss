@@ -23,7 +23,7 @@ body {
   background-image: url("splash.jpg") ;
 }
 
-div#message-view {
+div#new-message-view {
   background: white;
   margin: 0 auto;
   width: 90%;
@@ -36,7 +36,18 @@ div#message-view {
   left: 5%;
 }
 
-
+div#messages-view {
+  background: white;
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
+  display: none;
+  border: 2px solid;
+  border-radius: 20px;
+  position: fixed;
+  top: 5%;
+  left: 5%;
+}
 
 div#show-view {
   background: white;

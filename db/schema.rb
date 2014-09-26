@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925181734) do
+ActiveRecord::Schema.define(version: 20140926001247) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 20140925181734) do
     t.boolean  "is_follow_request?", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "sender_deleted?",    default: false
+    t.boolean  "recipient_deleted?", default: false
   end
 
   create_table "posts", force: true do |t|
