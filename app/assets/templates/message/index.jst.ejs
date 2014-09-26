@@ -1,22 +1,64 @@
-Your Messages
+<nav class="header">
+    <nav class="super"> <a href="#">Search</a>
+ <a href="#" id="close-messages">Close</a>
 
-<button type="button" class="close" id="close-messages">&times;</button>
+    </nav>
+    <div class="search">
+        <div class="input-append">
+            <input class="input-xlarge" id="appendedDropdownButton" type="text" />
+            <div class="btn-group">
+                <button class="btn btn-primary" data-toggle="dropdown">Search <span class="caret"></span>
 
-<ul>
-  <% receivedMessages.each(function (message) { %>
-    <% if (!message.get('recipient_deleted?')) { %>
-      <li><%= message.get('title') %> <a data-id="<%= message.id %>" class="delete-message">delete</a></li>
-    <% } %>
-  
-  <% }) %>
-</ul>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="controls">
+         <h1>Messages</h1>
 
-Sent Messages
-<ul>
-  <% sentMessages.each(function (message) { %>
-    <% if (!message.get('sender_deleted?')) { %>
-      <li><%= message.get('title') %> <a data-id="<%= message.id %>" class="delete-message">delete</a></li>
-    <% } %>
-  <% }) %>
-</ul>
 
+    </div>
+</nav>
+<div id="side">
+    <button class="btn btn-danger" id="compose-button">Compose</button>
+    <ul class="nav nav-list">
+        <li class="active"><a>Inbox</a>
+        </li>
+        <li><a>Sent Messages</a>
+        </li>
+        <li><a>Follow Up</a>
+        </li>
+    </ul>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Friends Online</p>
+</div>
+<div id="content">
+
+    <h2>My Messages</h2>
+    <table class="table">
+
+
+        <tr>
+            <th>Sender</th>
+            <th>Subject</th>
+            <th></th>
+            <th>Date Sent</th>
+        </tr>
+     <% receivedMessages.each(function (message) { %>
+        <% if (!message.get('recipient_deleted?')) { %>
+        <tr class="for-message">
+            <td><%= message.get('sender_name')%></td>
+            <td><%= message.get('title') %></td>
+            <td></td>
+            <td><%= message.get('created_at').slice(5,10) %></td>
+        </tr>
+        <% } %>
+      <% }) %>
+       
+    </table>
+</div>
+<footer>Footer</footer>

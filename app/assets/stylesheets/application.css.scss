@@ -49,18 +49,23 @@ div#messages-view {
   left: 5%;
 }
 
+
+
+
+
 div#show-view {
   background: white;
-  margin: 0 auto;
-  width: 90%;
-  height: 90%;
+//  margin: 0 auto;
+  width: 800px;
+  height: 600px;
   display: none;
   border: 2px solid;
   border-radius: 20px;
-  position: fixed;
+  position: absolute;
   top: 5%;
   left: 5%;
 }
+
 
 
 div#image-container {
@@ -70,8 +75,93 @@ div#image-container {
   height: 100%;
   padding: 10px;
 }
-
+//
 div#form-container {
   display: inline-block;
   height: 100%;
 }
+
+
+
+
+nav.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 139px;
+    border-bottom: 1px solid #ddd;
+}
+nav.header .super {
+    background-color: #2D2D2D;
+    padding-left: 16px;
+}
+nav.header .super a {
+    display: inline-block;
+    padding: 2px 8px;
+    font-weight: bold;
+    color: #aaa;
+}
+#logo {
+    margin:0 32px 0 16px;
+}
+nav.header .search {
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+    background-color: #f3f3f3;
+}
+nav.header .controls {
+    padding: 8px 16px;
+}
+nav.header .controls h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal;
+    color: #DD4B39;
+    display: inline-block;
+    width: 160px;
+}
+#side {
+    position: absolute;
+    top: 140px;
+    left: 0;
+    bottom: 0;
+    padding: 8px;
+    width: 164px;
+    background-color: #f5f5f5;
+    overflow: auto;
+}
+
+.table tr.for-message:hover {
+  background: green;
+}
+
+
+
+#content {
+    position: absolute;
+    top: 140px;
+    left: 196px;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+
+#content h2{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.btn .caret {
+    margin-left: 16px;
+}
+.unread-message {
+    text-align: center;
+    margin: 1em;
+}
+#compose-button {
+    width: 120px;
+    margin-bottom: 2em;
+}
+
+
