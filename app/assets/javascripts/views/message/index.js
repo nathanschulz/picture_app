@@ -14,6 +14,14 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 		this.sentMessages = options.sentMessages;
 		this.listenTo(this.collection, 'sync', this.render);
 		this.listenTo(this.sentMessages, 'sync', this.render);
+		this.$el.on('click', '.content-toggle', this.handleToggle);
+	},
+	
+	handleToggle: function (event) {
+		event.preventDefault();
+		var desiredContent = $(event.currentTarget).data('name');
+		$('.middle-pane').removeClass('being-viewed');
+		$(desiredContent).addClass('being-viewed');
 	},
 	
   

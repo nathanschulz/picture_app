@@ -8,7 +8,8 @@ class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @user = User.find_by_username(params[:message][:sendee_id])
-    @message.sender_name = @user.username
+    @message.recipient_name = params[:message][:sendee_id]
+    @message.sender_name = current_user.username
     @message.sendee_id = @user.id
     if @message.save
       render json: @message

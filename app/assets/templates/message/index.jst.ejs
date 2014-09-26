@@ -15,18 +15,14 @@
     </div>
     <div class="controls">
          <h1>Messages</h1>
-
-
     </div>
 </nav>
 <div id="side">
-    <button class="btn btn-danger" id="compose-button">Compose</button>
+    <button class="btn content-toggle" data-name="#compose-button">Compose</button>
     <ul class="nav nav-list">
-        <li class="active"><a>Inbox</a>
+        <li class="content-toggle" data-name="#received-messages"><a>Inbox</a>
         </li>
-        <li><a>Sent Messages</a>
-        </li>
-        <li><a>Follow Up</a>
+        <li class="content-toggle" data-name="#sent-messages"><a>Sent Messages</a>
         </li>
     </ul>
     <p>&nbsp;</p>
@@ -37,16 +33,14 @@
     <p>Friends Online</p>
 </div>
 <div id="content">
-
+  <div class="middle-pane being-viewed" id="received-messages">
     <h2>My Messages</h2>
     <table class="table">
-
-
         <tr>
             <th>Sender</th>
             <th>Subject</th>
             <th></th>
-            <th>Date Sent</th>
+            <th>Date Received</th>
         </tr>
      <% receivedMessages.each(function (message) { %>
         <% if (!message.get('recipient_deleted?')) { %>
@@ -57,8 +51,34 @@
             <td><%= message.get('created_at').slice(5,10) %></td>
         </tr>
         <% } %>
-      <% }) %>
-       
+      <% }) %>   
     </table>
+  </div>
+  <div class="middle-pane" id="sent-messages">
+    <h2>Sent Messages</h2>
+    <table class="table">
+        <tr>
+            <th>Recipient</th>
+            <th>Subject</th>
+            <th></th>
+            <th>Date Sent</th>
+        </tr>
+     <% sentMessages.each(function (message) { %>
+        <% if (!message.get('sender_deleted?')) { %>
+        <tr class="for-message">
+            <td><%= message.get('recipient_name')%></td>
+            <td><%= message.get('title') %></td>
+            <td></td>
+            <td><%= message.get('created_at').slice(5,10) %></td>
+        </tr>
+        <% } %>
+      <% }) %>   
+    </table>
+  </div>
+    
+    
+    
+    
+    
 </div>
 <footer>Footer</footer>

@@ -19,6 +19,17 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+.gallery .caption { margin: 5px 0 15px; padding: 0 15px; }
+.gallery [class^="col-"] { padding: 0; }
+
+@media (min-width: 768px) {
+.gallery .row { margin: 0; }
+.gallery .caption { display: none; }
+}
+
+
+
 body {
   background-image: url("splash.jpg") ;
 }
@@ -43,7 +54,6 @@ div#messages-view {
   height: 90%;
   display: none;
   border: 2px solid;
-  border-radius: 20px;
   position: fixed;
   top: 5%;
   left: 5%;
@@ -91,6 +101,7 @@ nav.header {
     right: 0;
     height: 139px;
     border-bottom: 1px solid #ddd;
+    z-index: 500000000000000000000000;
 }
 nav.header .super {
     background-color: #2D2D2D;
@@ -131,6 +142,15 @@ nav.header .controls h1 {
     background-color: #f5f5f5;
     overflow: auto;
 }
+
+div.middle-pane {
+  display: none;
+}
+
+div.middle-pane.being-viewed{
+  display: block;
+}
+
 
 .table tr.for-message:hover {
   background: green;

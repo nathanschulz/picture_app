@@ -2,13 +2,9 @@
 <div class="row">
   <% user.posts().each(function(post){ %>
     <div class="col-xs-3">
-      <a 
-        href="#cool-modal" 
-        class="thumbnail" 
-        data-id="<%= post.id %>"
-        data-toggle="modal"
-        class="btn btn-primary">
-        <img src="<%= post.get('filepicker_url') %>" alt="200x200">
+        <a href= "<%= post.get('filepicker_url') %>" title="Picture" data-gallery>
+        <img src="<%= post.get('filepicker_url') %>" title="Picture">
+      </a>
       </a>
     </div>
   <% }) %>
