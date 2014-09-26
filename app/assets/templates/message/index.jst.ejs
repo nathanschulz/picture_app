@@ -18,7 +18,7 @@
     </div>
 </nav>
 <div id="side">
-    <button class="btn content-toggle" data-name="#compose-button">Compose</button>
+    <button class="btn content-toggle" data-name="#compose-message">Compose</button>
     <ul class="nav nav-list">
         <li class="content-toggle" data-name="#received-messages"><a>Inbox</a>
         </li>
@@ -44,7 +44,7 @@
         </tr>
      <% receivedMessages.each(function (message) { %>
         <% if (!message.get('recipient_deleted?')) { %>
-        <tr class="for-message">
+        <tr class="for-message content-toggle" data-name="#view-message" data-id="<%= message.id %>">
             <td><%= message.get('sender_name')%></td>
             <td><%= message.get('title') %></td>
             <td></td>
@@ -54,6 +54,23 @@
       <% }) %>   
     </table>
   </div>
+  
+  <div class="middle-pane" id="compose-message">
+    <form id="comment-form">
+      <label for="message=recipient">Recipient</label>
+      <input type="text" id="message-recipient">
+      <label for="message=recipient">Subject</label>
+      <input type="text" id="message-subject">
+      <label for="message-body">Body</label>
+      <input type="text" id="message-body">
+      <button type="button" class="btn btn-primary" id="send-message">Send Message</button>  
+    </form>
+  </div>
+  
+  <div class="middle-pane" id="view-message">
+    Viewing Message
+  </div>
+  
   <div class="middle-pane" id="sent-messages">
     <h2>Sent Messages</h2>
     <table class="table">
@@ -65,7 +82,7 @@
         </tr>
      <% sentMessages.each(function (message) { %>
         <% if (!message.get('sender_deleted?')) { %>
-        <tr class="for-message">
+        <tr class="for-message content-toggle" data-name="#view-message" data-id="<%= message.id %>">
             <td><%= message.get('recipient_name')%></td>
             <td><%= message.get('title') %></td>
             <td></td>
