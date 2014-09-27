@@ -1,12 +1,12 @@
 PictureApp.Routers.Main = Backbone.Router.extend({
 	initialize: function (options) {
 		this.$rootEl = options.$rootEl
-		var that = this
 		PictureApp.Collections.receivedMessages.fetch(
-			{success: that.notifyUser()})
+			{success: this.notifyUser, wait: true})
 	},
 
 	notifyUser: function () {
+		console.log(PictureApp.Collections.receivedMessages.length)
 		var messages =  PictureApp.Collections.receivedMessages
 		var unreadMessageCount = messages.where({'unread?' : true}).length
 		if (unreadMessageCount > 0) {
