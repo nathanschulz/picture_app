@@ -60,7 +60,8 @@
   <input 
     id="current-user-id" 
     type="hidden" 
-    data-current-user-id="<%= current_user.id if current_user %>">
+    data-current-user-id="<%= current_user.id if current_user %>"
+    data-current-user-name="<%= current_user.username if current_user %>">
    <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -70,8 +71,12 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <% if logged_in? && current_user.id == @page_id %>
+          <% if logged_in? && current_user.id == page_id.to_i %>
             <li><a href="#upload">Upload Picture</a></li>
+          <% elsif logged_in? && !is_following? && current_user.id != page_id.to_i %>
+            <li><a href="#follow">Follow</a></li>
+          <% elsif logged_in? && is_following? %>
+            <li><a href="#unfollow">Unfollow</a></li>
           <% end %>
           <% unless logged_in? %>
             <li><%= link_to "Login", new_session_url %></li>

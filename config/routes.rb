@@ -14,7 +14,10 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :destroy, :show]
     resources :users, only: [:show]
     resources :messages, only: [:create, :index, :show]
-    resources :received_messages, only: [:index, :show]
+    resources :received_messages, only: [:index, :show, :update]
+    resources :followings, only: [:create, :destroy]
+    resources :followers, only: [:index]
+    resources :followees, only: [:index]
   end
 
   

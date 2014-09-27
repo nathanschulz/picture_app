@@ -68,10 +68,7 @@ class User < ActiveRecord::Base
     return user if user.is_password?(password)
     return nil
    end
-   
-  def is_following?(user)
-    this.followeds.exists?(user)
-  end
+
   
   def password=(password)
     @password = password

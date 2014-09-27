@@ -8,7 +8,14 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 	},
 	
 	deleteMessage: function () {
-		event.preventDefault();
+	},
+	
+	showMessage: function (event) {
+		var thing = $(event.currentTarget)
+		var messageId = $(event.currentTarget).data('id')
+		this.viewedMessage = this.collection.get(messageId) || this.sentMessages.get(messageId);
+		this.messageView = new PictureApp.Views.MessageShow({model: this.viewedMessage});
+		$('#view-message').html(this.messageView.render().$el);
 	},
 	
 	sendMessage: function () {
@@ -24,9 +31,10 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 				title: messageSubject
 			}
 		});
+		var that = this
 		newMessage.save({}, {
 			success: function() {
-				alert('success!')
+				that.sentMessages.add(newMessage);
 			}
 		})
 	},
@@ -35,23 +43,29 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 		this.sentMessages = options.sentMessages;
 		this.listenTo(this.collection, 'sync', this.render);
 		this.listenTo(this.sentMessages, 'sync', this.render);
-		this.$el.on('click', '.content-toggle', this.handleToggle);
+		this.$el.on('click', '.content-toggle', this.handleToggle.bind(this));
 	},
 	
 	handleToggle: function (event) {
 		event.preventDefault();
-		debugger
+		if (this.messageView) {
+			this.viewedMessage.save({message: {'unread?': false}}, {patch: true});
+			this.viewedMessage = null;
+			this.messageView.remove();
+			this.messageView = null;
+		}
 		var desiredContent = $(event.currentTarget).data('name');
 		$('.middle-pane').removeClass('being-viewed');
-		if ($(event.currentTarget).hasClass('for-message')) {
-
-		}
 		$(desiredContent).addClass('being-viewed');
+		if ($(event.currentTarget).hasClass('for-message')) {
+			this.showMessage(event);
+		}		
 	},
 	
   
   closeMessages: function () {
-    $('div#messages-view').css("display", "none")
+    $('div#messages-view').css("display", "none");
+		this.messageView && this.messageView.remove();
     this.remove();
   },
 	

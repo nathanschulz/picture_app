@@ -6,15 +6,14 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 		$('body').on('click', '#message-button', this.sendMessage.bind(this));
 		$('body').on('click', '#read-messages-button', this.readMessages.bind(this));
 	},
-
   
   events: {
     'click .thumbnail' : 'postShow',
 	},
 	
 	readMessages: function () {
-		PictureApp.Collections.sentMessages.fetch();
 		PictureApp.Collections.receivedMessages.fetch();
+		PictureApp.Collections.sentMessages.fetch();		
 		var messageView = new PictureApp.Views.MessageIndex({
 			collection: PictureApp.Collections.receivedMessages,
 			sentMessages: PictureApp.Collections.sentMessages

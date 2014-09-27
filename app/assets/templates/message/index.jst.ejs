@@ -44,7 +44,11 @@
         </tr>
      <% receivedMessages.each(function (message) { %>
         <% if (!message.get('recipient_deleted?')) { %>
-        <tr class="for-message content-toggle" data-name="#view-message" data-id="<%= message.id %>">
+          <% if (message.get('unread?')){ %>
+            <% var messageClass = "unread" } else { var messageClass = "read" } %>
+     
+
+        <tr class="for-message content-toggle <%= messageClass %>" data-name="#view-message" data-id="<%= message.id %>">
             <td><%= message.get('sender_name')%></td>
             <td><%= message.get('title') %></td>
             <td></td>
@@ -57,18 +61,15 @@
   
   <div class="middle-pane" id="compose-message">
     <form id="comment-form">
-      <label for="message=recipient">Recipient</label>
-      <input type="text" id="message-recipient">
-      <label for="message=recipient">Subject</label>
-      <input type="text" id="message-subject">
-      <label for="message-body">Body</label>
-      <input type="text" id="message-body">
+      <input id="message-recipient" type="text" class="enter-recipient" placeholder="Recipient">
+      <input id="message-subject" type="text" placeholder="Subject" class="enter-recipient">
+      <textarea class="message-body" id="message-body" placeholder="Body"></textarea>
       <button type="button" class="btn btn-primary" id="send-message">Send Message</button>  
     </form>
   </div>
   
   <div class="middle-pane" id="view-message">
-    Viewing Message
+
   </div>
   
   <div class="middle-pane" id="sent-messages">

@@ -1,7 +1,7 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
- * access key id AKIAJJDQH5XYQJFAILTQ   secret access key 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
+ * 
  * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
  * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
  *
@@ -59,7 +59,27 @@ div#messages-view {
   left: 5%;
 }
 
+textarea.message-body {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  display: block;
+  resize: none;
+}
 
+button#send-message {
+  display: block;
+  position: absolute;
+  top: 80%;
+}
+
+div#messages-view .enter-recipient {
+  border: none;
+  outline: none;
+  border-bottom: #DDDDDD solid thin;
+  display: block;
+  width: 100%;
+}
 
 
 
@@ -91,7 +111,9 @@ div#form-container {
   height: 100%;
 }
 
-
+tr.unread {
+  background: #EFEFEF;
+}
 
 
 nav.header {

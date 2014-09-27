@@ -7,8 +7,13 @@ class Api::MessagesController < ApplicationController
   
   def create
     @message = Message.new(message_params)
-    @user = User.find_by_username(params[:message][:sendee_id])
-    @message.recipient_name = params[:message][:sendee_id]
+    if params[:message][:sendee_id].is_a?(Integer)
+      @user = User.find(params[:message][:sendee_id])
+      @message.recipient_name = @user.username
+    else
+      @user = User.find_by_username(params[:message][:sendee_id])
+      @message.recipient_name = params[:message][:sendee_id]
+    end    
     @message.sender_name = current_user.username
     @message.sendee_id = @user.id
     if @message.save
@@ -26,6 +31,6 @@ class Api::MessagesController < ApplicationController
   
   private
   def message_params
-    params.require(:message).permit(:sender_id, :title, :body, :is_follow_request?)
+    params.require(:message).permit(:sender_id, :title, :body, :is_follow_request?, :unread?)
   end
 end
