@@ -8,6 +8,7 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 	},
 	
 	deleteMessage: function () {
+		debugger
 	},
 	
 	showMessage: function (event) {

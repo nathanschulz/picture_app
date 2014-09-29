@@ -31,7 +31,8 @@
 
 
 body {
-  background-image: url("splash.jpg") ;
+  background-color: #FFCCCC;
+//  background-image: url("splash.jpg") ;
 }
 
 div#new-message-view {
@@ -85,13 +86,13 @@ div#messages-view .enter-recipient {
 
 div#show-view {
   background: white;
-//  margin: 0 auto;
-  width: 800px;
-  height: 600px;
+  margin: 0 auto;
+  width: 90%;
+  height: 90%;
   display: none;
   border: 2px solid;
   border-radius: 20px;
-  position: absolute;
+  position: fixed;
   top: 5%;
   left: 5%;
 }

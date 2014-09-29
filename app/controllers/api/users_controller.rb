@@ -4,4 +4,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
   
+  def index
+    render json: User.all
+  end
+  
 end

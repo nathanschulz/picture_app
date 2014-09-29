@@ -41,6 +41,7 @@
             <th>Subject</th>
             <th></th>
             <th>Date Received</th>
+            <th>Delete</th>
         </tr>
      <% receivedMessages.each(function (message) { %>
         <% if (!message.get('recipient_deleted?')) { %>
@@ -53,6 +54,7 @@
             <td><%= message.get('title') %></td>
             <td></td>
             <td><%= message.get('created_at').slice(5,10) %></td>
+            <td><a class="delete-message" data-id="<%= message.id %>">&times;</a></td>
         </tr>
         <% } %>
       <% }) %>   
@@ -80,6 +82,7 @@
             <th>Subject</th>
             <th></th>
             <th>Date Sent</th>
+            <th>Delete</th>
         </tr>
      <% sentMessages.each(function (message) { %>
         <% if (!message.get('sender_deleted?')) { %>
@@ -88,6 +91,7 @@
             <td><%= message.get('title') %></td>
             <td></td>
             <td><%= message.get('created_at').slice(5,10) %></td>
+            <td><a>&times;</a></td>
         </tr>
         <% } %>
       <% }) %>   

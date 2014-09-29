@@ -1,0 +1,16 @@
+<button type="button" class="close" id="close-modal">&times;</button>
+<div id="image-container">
+  <img src="<%= post.attributes.filepicker_url %>">
+</div>
+<div id="form-container">
+  <ul>
+  <% post.comments().forEach (function(comment){ %>
+    <li><%= comment.attributes.body %></li>  
+  <% }) %>
+  </ul>
+  <form id="comment-form">
+    <input type="text" id="title-input">
+    <button type="button" class="btn btn-primary" id="make-comment">Comment!</button>  
+  </form>
+
+</div>

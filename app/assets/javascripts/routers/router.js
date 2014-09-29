@@ -6,11 +6,15 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	},
 
 	notifyUser: function () {
-		console.log(PictureApp.Collections.receivedMessages.length)
-		var messages =  PictureApp.Collections.receivedMessages
-		var unreadMessageCount = messages.where({'unread?' : true}).length
-		if (unreadMessageCount > 0) {
-			alert("You have " + unreadMessageCount + " unread messages.")
+		if ($('#just-logged-in').data('just-logged-in') == true) {
+			var messages =  PictureApp.Collections.receivedMessages
+			var unreadMessageCount = messages.where({'unread?' : true}).length
+			if (unreadMessageCount > 0) {
+				alert("You have " + unreadMessageCount + " unread messages.")
+				debugger
+				$('#just-logged-in').data('just-logged-in', 'false')
+				debugger
+			}
 		}
 	},
 	
@@ -49,7 +53,6 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		})
 		followNotification.save({},{
 			success: function () {
-				alert('success!')
 			}
 		})
 		

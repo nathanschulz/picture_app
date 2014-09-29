@@ -4,4 +4,5 @@ class Api::FollowersController < ApplicationController
     render json: current_user.followers
   end
   
+  
 end

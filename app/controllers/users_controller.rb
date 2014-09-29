@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_filter :redirect_if_logged_out!, only: [:show]
+  
   def new
   end
   
@@ -8,7 +10,7 @@ class UsersController < ApplicationController
     
     if @user.save
       login!(@user)
-      redirect_to user_url(@user) 
+      redirect_to user_url(@user.username) 
     else
       flash[:errors] = [@user.errors.full_messages]
       redirect_to new_session_url
@@ -16,8 +18,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @page_id = params[:id].to_i
-    @user = User.find(@page_id)
+    @page_id = params[:id]
+    @user = User.find_by_username(@page_id)
     # render json: user.posts
   end
   

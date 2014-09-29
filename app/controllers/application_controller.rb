@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   
   def page_user
-    @page_user ||= User.find(params[:id])
+    @page_user ||= User.find_by_username(params[:id])
   end
      
   def is_following?
