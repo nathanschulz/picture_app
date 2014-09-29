@@ -1,22 +1,19 @@
 PictureApp.Routers.Main = Backbone.Router.extend({
 	initialize: function (options) {
 		this.$rootEl = options.$rootEl
-		PictureApp.Collections.receivedMessages.fetch(
-			{success: this.notifyUser, wait: true})
+		PictureApp.Collections.receivedMessages.fetch()
 	},
 
-	notifyUser: function () {
-		if ($('#just-logged-in').data('just-logged-in') == true) {
-			var messages =  PictureApp.Collections.receivedMessages
-			var unreadMessageCount = messages.where({'unread?' : true}).length
-			if (unreadMessageCount > 0) {
-				alert("You have " + unreadMessageCount + " unread messages.")
-				debugger
-				$('#just-logged-in').data('just-logged-in', 'false')
-				debugger
-			}
-		}
-	},
+	// notifyUser: function () {
+	// 	if ($('#just-logged-in').data('just-logged-in') == true) {
+	// 		var messages =  PictureApp.Collections.receivedMessages
+	// 		var unreadMessageCount = messages.where({'unread?' : true}).length
+	// 		if (unreadMessageCount > 0) {
+	// 			alert("You have " + unreadMessageCount + " unread messages.")
+	// 			$('#just-logged-in').data('just-logged-in', 'false')
+	// 		}
+	// 	}
+	// },
 	
 	routes: {
 		'' : 'index',

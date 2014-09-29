@@ -11,9 +11,10 @@ class SessionsController < ApplicationController
       user_params[:password])
     if @user
       login!(@user)
+      flash[:notifications] = ["You have #{@user.unread_messages.count} unread messages."]
       redirect_to user_url(@user.username)
     else
-      flash.now[:errors] = ['Invalid Credentials']
+      flash.now[:notifications] = ['Invalid Credentials']
       render :new
     end    
   end

@@ -23,7 +23,7 @@
 
 <body>
     
-    
+
   <input
     type="hidden"
     id="just-logged-in"
@@ -53,7 +53,7 @@
             <li><%= link_to "Sign Up", new_user_url %></li>
           <% else %>
             <li><%= link_to "Log Out", session_url, method: :delete %></li>
-            <li><%= link_to "Profile", user_url(current_user) %></li>
+            <li><%= link_to "Profile", user_url(current_user.username) %></li>
      
           
               <li class="dropdown">
@@ -75,10 +75,10 @@
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
-<% if flash[:errors] %>
+<% if flash[:notifications] %>
 <div class="alert alert-warning alert-dismissible" role="alert">
    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-<%= flash[:errors].join("<br>").html_safe %>
+<%= flash[:notifications].join("<br>").html_safe %>
 </div>
 <% end %>
 
@@ -93,7 +93,8 @@
     
     
   </div>
-
+  <div id="message-background">
+  </div>
 
 
 

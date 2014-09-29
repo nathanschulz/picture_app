@@ -11,6 +11,10 @@ PictureApp.Views.IndexView = Backbone.View.extend({
     'click .thumbnail' : 'postShow',
 	},
 	
+	changeAvatar: function () {
+		
+	},
+	
 	readMessages: function () {
 		PictureApp.Collections.receivedMessages.fetch();
 		PictureApp.Collections.sentMessages.fetch();		
@@ -18,6 +22,7 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 			collection: PictureApp.Collections.receivedMessages,
 			sentMessages: PictureApp.Collections.sentMessages
 		});
+		$('body').css('overflow', 'hidden');
 		$('div#messages-view').html(messageView.render().$el);
 		$('div#messages-view').css("display", "block");	
 	},

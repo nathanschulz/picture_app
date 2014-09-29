@@ -10,6 +10,11 @@
 #  is_follow_request? :boolean          default(FALSE)
 #  created_at         :datetime
 #  updated_at         :datetime
+#  sender_deleted?    :boolean          default(FALSE)
+#  recipient_deleted? :boolean          default(FALSE)
+#  sender_name        :string(255)
+#  recipient_name     :string(255)
+#  unread?            :boolean          default(TRUE)
 #
 
 class Message < ActiveRecord::Base

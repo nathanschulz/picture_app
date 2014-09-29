@@ -65,7 +65,9 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 	
   
   closeMessages: function () {
+		$('div#message-background').css('display', 'none')
     $('div#messages-view').css("display", "none");
+		$('body').css('overflow', 'auto')
 		this.messageView && this.messageView.remove();
     this.remove();
   },

@@ -1,4 +1,6 @@
-<% if ($('#user-id').length > 0) { %>
+<% if ($('#user-id').length > 0 && user.posts().length > 0) { %>
+  <% var postsLength = user.posts().length %>
+
 <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.min.js"></script>
 
@@ -9,7 +11,6 @@
                     <div class="compPhoto compPhoto1">
                         <a href="#">
                             <div class="Image iWithTransition">
-                              
                                 <img  src=""/>
                                 <b class="compPhotoShadow"></b>
                             </div>
@@ -19,6 +20,8 @@
                         <a href="#">
                             <div class="Image iLoaded iWithTransition">
                                 <img src="http://placehold.it/225x225/545454/fff&text=photo2"/>
+                                
+                                
                                 <b class="compPhotoShadow"></b>
                             </div>
                         </a>
@@ -74,7 +77,9 @@
       <div class="row-fluid">
     <div class="span6">
       <div class="pull-left" style="margin-right:15px">
-          <img src="http://www.gravatar.com/avatar/f6112e781842d6a2b4636b35451401ff?s=80&d=mm&r=g" class="img-polaroid"/>
+          <img src="<%= user.escape('avatar') %>" data-toggle="modal" data-target="#myModal" class="img-polaroid"/>
+        
+          
       </div>
 
       <h2><%= user.get('username') %></h2>
@@ -85,8 +90,8 @@
     <div class="span6">
       <ul class="inline user-counts-list">
         <li>Photos <span class="count"><%= user.posts().length %></span></li>
-        <li>Followers <span class="count"><% user.followees && user.followees().length %></span></li>
-        <li>Following <span class="count"><% user.followers && user.followers().length %></span></li>
+        <li>Followers <span class="count"><%= user.get('followers') %></span></li>
+        <li>Following <span class="count"><%= user.get('followeds') %></span></li>
       </ul>
     </div>
   </div>
@@ -112,7 +117,7 @@
 <div id="messages-view"></div>
  <div id="show-view"></div>
  <% } %>
- 
+
  
  
  

@@ -61,6 +61,9 @@ class User < ActiveRecord::Base
     SecureRandom::urlsafe_base64(16)
   end
   
+  
+  
+  
   def self.find_by_credentials(username, password)
     user = self.find_by_username(username)
     print user
@@ -68,6 +71,12 @@ class User < ActiveRecord::Base
     return user if user.is_password?(password)
     return nil
    end
+
+
+   def unread_messages
+     self.received_messages.where(unread?: true)
+   end
+
 
   
   def password=(password)

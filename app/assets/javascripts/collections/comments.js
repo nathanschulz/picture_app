@@ -5,5 +5,8 @@ PictureApp.Collections.Comments = Backbone.Collection.extend({
     if (options) {
       this.post = options.post;
     }
-  }
+  },
+	comparator: function (model) {
+		return -(new Date(model.get('created_at'))).getTime();
+	}	
 })
