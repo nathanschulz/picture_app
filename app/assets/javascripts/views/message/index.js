@@ -4,8 +4,10 @@ PictureApp.Views.MessageIndex = Backbone.View.extend({
 	events: {
 		'click #close-messages' : 'closeMessages',
 		'click .delete-message' : 'deleteMessage',
-		'click #send-message' : 'sendMessage',
+		'click #send-message' : 'sendMessage'
 	},
+	
+	
 	
 	deleteMessage: function () {
 		debugger

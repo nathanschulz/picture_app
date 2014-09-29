@@ -9,11 +9,29 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   
   events: {
     'click .thumbnail' : 'postShow',
+		'click .followers-count' : 'viewFollowers',
+		// 'click .following-count' : 'viewFollowing'
 	},
 	
-	changeAvatar: function () {
-		
+	// viewFollowing: function (event) {
+	// 	alert('viewing following');
+	//
+	// },
+	//
+	viewFollowers: function (event) {
+		var modalView = new PictureApp.Views.FollowersModal({model: this.model});
+		var modal = new Backbone.BootstrapModal({
+			content: modalView,
+			title: "Followers",
+			animate: true
+		})
+		modal.open(function() {console.log('clicked modal')});
+		// this.model.followers.forEach(function(follower){
+// 			alert('viewing follower ' + follower.username);
+//
+// 		})
 	},
+	
 	
 	readMessages: function () {
 		PictureApp.Collections.receivedMessages.fetch();

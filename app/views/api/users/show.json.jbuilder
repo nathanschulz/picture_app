@@ -7,5 +7,8 @@ json.posts @user.posts do |post|
 end
 
 json.followers @user.followers.count
-
 json.followeds @user.followeds.count
+
+json.all_followers @user.followers do |follower|
+  json.(follower, :username, :avatar)
+end

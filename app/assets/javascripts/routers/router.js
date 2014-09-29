@@ -22,6 +22,10 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		'unfollow': 'unfollow'
 	},
 	
+	
+	
+	
+	
 	follow: function () {
 		var followerId = $('#current-user-id').data('current-user-id');
 		var followeeId = $('#user-id').data('user-id');
