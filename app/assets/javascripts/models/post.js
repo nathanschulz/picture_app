@@ -9,10 +9,20 @@ PictureApp.Models.Post = Backbone.Model.extend({
     }
     return this._comments;
   },
+	
+	likes: function () {
+		if (!this._likes) {
+			this._likes = new PictureApp.Collections.Likes([], {
+				post: this
+			})
+		}
+		return this._likes;
+	},
     
   parse: function (response) {
     if (response.comments) {
       this.comments().set(response.comments, {parse: true});
+			this.likes().set(response.comments, {parse: true});
       delete response.comments;
     }
     return response;

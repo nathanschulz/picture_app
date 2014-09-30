@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
   #
   belongs_to :user
   has_many :comments
+  has_many :likes
   
   # def ensure_order
  #    last_post = Post.order(:created_at).last

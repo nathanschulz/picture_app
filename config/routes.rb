@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :followings, only: [:create, :destroy]
     resources :followers, only: [:index]
     resources :followees, only: [:index]
+    resources :likes, only: [:create, :destroy, :show, :index]
   end
 
   

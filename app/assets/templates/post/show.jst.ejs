@@ -1,6 +1,9 @@
 <button type="button" class="close" id="close-modal">&times;</button>
 <div id="image-container">
   <img src="<%= post.attributes.filepicker_url %>">
+  <% if (post.attributes.likes) { %>
+    <%= post.attributes.likes.length %> likes.
+  <% } %>
 </div>
 
 <div class="detailBox">

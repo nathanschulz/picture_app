@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
   
   def redirect_if_logged_in!
-    redirect_to user_url(current_user) if logged_in? 
+    redirect_to user_url(current_user.username) if logged_in? 
   end
   
 end
