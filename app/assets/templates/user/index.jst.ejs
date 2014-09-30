@@ -78,7 +78,7 @@
       <div class="row-fluid">
     <div class="span6">
       <div class="pull-left" style="margin-right:15px">
-          <img src="<%= user.escape('avatar') %>" data-toggle="modal" data-target="#myModal" class="img-polaroid"/>
+          <img src="<%= user.escape('avatar') %>" title="Change avatar" class="img-polaroid"/>
         
           
       </div>
@@ -104,14 +104,21 @@
 
 
 <div class="row">
-
+<% var item = 0 %>
   <% user.posts().each(function(post){ %>
+    <% if (item === 0) {%>
+      <div class="row">
+    <% } %>
     <div class="col-xs-3">
         <a class="thumbnail" href= "<%= post.get('filepicker_url') %>" title="Picture" data-id="<%= post.id %>">
         <img src="<%= post.get('filepicker_url') %>" title="Picture">
       </a>
       </a>
     </div>
+    <% if (item === 3) {%>
+      </div>
+    <% } %>
+    <% item = (item + 1) % 4 %>
   <% }) %>
 </div>
 <div id="new-message-view"></div>

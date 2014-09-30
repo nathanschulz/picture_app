@@ -3,17 +3,6 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		this.$rootEl = options.$rootEl
 		PictureApp.Collections.receivedMessages.fetch()
 	},
-
-	// notifyUser: function () {
-	// 	if ($('#just-logged-in').data('just-logged-in') == true) {
-	// 		var messages =  PictureApp.Collections.receivedMessages
-	// 		var unreadMessageCount = messages.where({'unread?' : true}).length
-	// 		if (unreadMessageCount > 0) {
-	// 			alert("You have " + unreadMessageCount + " unread messages.")
-	// 			$('#just-logged-in').data('just-logged-in', 'false')
-	// 		}
-	// 	}
-	// },
 	
 	routes: {
 		'' : 'index',
@@ -23,15 +12,8 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	},
 	
 	
-	
-	
-	
 	follow: function () {
-		var followerId = $('#current-user-id').data('current-user-id');
-		var followeeId = $('#user-id').data('user-id');
-		var newFollowing = new PictureApp.Models.Following({
-			following: {follower_id: followerId, followee_id: followeeId}
-		});
+		var newFollowing = this.createNewFollowing();
 		var that = this
 		newFollowing.save({}, {
 			success: function () {
@@ -39,6 +21,15 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 			}
 		})		
 		Backbone.history.navigate('', {trigger: true})
+	},
+	
+	createNewFollowing: function () {
+		var followerId = $('#current-user-id').data('current-user-id');
+		var followeeId = $('#user-id').data('user-id');
+		var newFollowing = new PictureApp.Models.Following({
+			following: {follower_id: followerId, followee_id: followeeId}
+		});
+		return newFollowing;
 	},
 	
 	
@@ -64,10 +55,9 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		var newFollowing = new PictureApp.Models.Following({
 			id: followeeId
 		});
-		debugger
 		newFollowing.destroy({}, {
 			success: function () {
-				alert('congratulations');
+				// alert('congratulations');
 			}
 		})
 		Backbone.history.navigate('', {trigger: true})
@@ -80,7 +70,7 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 			});
 			newPicture.save({}, {
 				success: function () {
-					alert('congratulations!');
+					// alert('congratulations!');
 				}
 			})
 		})

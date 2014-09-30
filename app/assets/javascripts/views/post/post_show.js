@@ -5,19 +5,16 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
     this.modelId = this.model.attributes.id;
     this.listenTo(this.model, 'sync change', this.render);
 		this.listenTo(this.model.comments(), 'sync', this.render)
-    // $('body').on('click', '#make-comment', this.makeComment.bind(this));
   },
   
   events: {
     'click #make-comment' : 'makeComment',
-    // 'click #close-modal' : 'closeModal'
+    'click #like-post' : 'likePost'
   },
-  
-  // closeModal: function () {
-  //   $('div#show-view').css("display", "none")
-  //   this.remove();
-  // },
-  
+	
+	likePost: function (event) {
+		event.preventDefault();
+	},
   
   makeComment: function (event) {
     event.preventDefault();
@@ -32,6 +29,7 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
 			}.bind(this)        
      })
   },
+	
   render: function () {
     var content = this.template({post: this.model});
     this.$el.html(content);

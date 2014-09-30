@@ -19,6 +19,16 @@ PictureApp.Views.MessageWrite = Backbone.View.extend({
 	
 	sendMessage: function () {
 		event.preventDefault();
+		var newMessage = this.writeMessage();
+		newMessage.save({}, {
+			success: function() {
+				alert('success!')
+			}
+		})
+		this.closeMessage();
+	},
+	
+	writeMessage: function () {
 		var messageBody = $('#message-body').val();
 		var messageRecipient = $('#message-recipient').val();
 		var messageSubject = $('#message-subject').val();
@@ -30,12 +40,7 @@ PictureApp.Views.MessageWrite = Backbone.View.extend({
 				title: messageSubject
 			}
 		});
-		newMessage.save({}, {
-			success: function() {
-				alert('success!')
-			}
-		})
-		this.closeMessage();
+		return newMessage;
 	}
-  
+	  
 })
