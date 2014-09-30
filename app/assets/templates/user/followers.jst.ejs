@@ -2,7 +2,7 @@
 <% user.followers.forEach(function(follower) { %>
   <div class="follow-view col-xs-2">
       <img src="<%= follower.avatar %>">
-      <a href="#"><%= follower.username %></a>  
+      <a href="<%= follower.username %>"><%= follower.username %></a>  
   </div>
 <%  })%>
 </div>
