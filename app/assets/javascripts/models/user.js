@@ -27,10 +27,11 @@ PictureApp.Models.User = Backbone.Model.extend({
 			this.posts().set(resp.posts);
 
 			this.followers = resp.all_followers;
+			this.followeds = resp.all_followeds;
 			
 			delete resp.posts;
 			delete resp.all_followers;
-			// delete resp.followees;
+			delete resp.all_followeds;
 		}
 		return resp;
 	}

@@ -1,0 +1,8 @@
+<div class="all-followers row">
+<% user.followeds.forEach(function(followed) { %>
+  <div class="follow-view col-xs-2">
+      <img src="<%= followed.avatar %>">
+      <a href="<%= followed.username %>"><%= followed.username %></a>  
+  </div>
+<%  })%>
+</div>

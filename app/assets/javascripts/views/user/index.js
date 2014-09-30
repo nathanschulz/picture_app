@@ -10,14 +10,19 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   events: {
     'click .thumbnail' : 'postShow',
 		'click .followers-count' : 'viewFollowers',
-		// 'click .following-count' : 'viewFollowing'
+		'click .following-count' : 'viewFollowing'
 	},
 	
-	// viewFollowing: function (event) {
-	// 	alert('viewing following');
-	//
-	// },
-	//
+	viewFollowing: function (event) {
+		var modalView = new PictureApp.Views.FollowingModal({model: this.model});
+		var modal = new Backbone.BootstrapModal({
+			content: modalView,
+			title: "Following",
+			animate: true
+		})
+		modal.open(function() {console.log('clicked modal')});
+	},
+
 	viewFollowers: function (event) {
 		var modalView = new PictureApp.Views.FollowersModal({model: this.model});
 		var modal = new Backbone.BootstrapModal({
@@ -26,10 +31,6 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 			animate: true
 		})
 		modal.open(function() {console.log('clicked modal')});
-		// this.model.followers.forEach(function(follower){
-// 			alert('viewing follower ' + follower.username);
-//
-// 		})
 	},
 	
 	

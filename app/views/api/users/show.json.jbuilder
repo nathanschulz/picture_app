@@ -12,3 +12,7 @@ json.followeds @user.followeds.count
 json.all_followers @user.followers do |follower|
   json.(follower, :username, :avatar)
 end
+
+json.all_followeds @user.followeds do |followed|
+  json.(followed, :username, :avatar)
+end
