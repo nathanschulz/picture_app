@@ -52,21 +52,34 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 		$('div#new-message-view').html(messageView.render().$el);
 		$('div#new-message-view').css("display", "block");		
 	},
+	
+	postShow: function (event) {
+		event.preventDefault();
+		var postId = $(event.currentTarget).data('id');
+		var post = PictureApp.Collections.posts.getOrFetch(postId);		
+		var modalView = new PictureApp.Views.PostShowView({model: post});
+		var modal = new Backbone.BootstrapModal({
+			content: modalView,
+			title: "",
+			animate: true
+		})
+		modal.open(function() {console.log('clicked modal')});
+	},
   
-  postShow: function (event) {
-    event.preventDefault();
-    
-    var picSpot = this.$('#show-view');
-    
-    var postId = $(event.currentTarget).data('id');
-    // var post = this.collection.get(postId);
-    var post = PictureApp.Collections.posts.getOrFetch(postId);
-    var modalView = new PictureApp.Views.PostShowView({
-      model: post
-    });
-    picSpot.html(modalView.render().$el);
-    this.$('div#show-view').css("display", "block")
-  },
+  // postShow: function (event) {
+  //   event.preventDefault();
+  //
+  //   var picSpot = this.$('#show-view');
+  //
+  //   var postId = $(event.currentTarget).data('id');
+  //   // var post = this.collection.get(postId);
+  //   var post = PictureApp.Collections.posts.getOrFetch(postId);
+  //   var modalView = new PictureApp.Views.PostShowView({
+  //     model: post
+  //   });
+  //   picSpot.html(modalView.render().$el);
+  //   this.$('div#show-view').css("display", "block")
+  // },
 	
 	render: function () {
 		var content = this.template({user: this.model});

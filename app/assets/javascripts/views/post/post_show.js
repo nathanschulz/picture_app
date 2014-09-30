@@ -10,13 +10,13 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
   
   events: {
     'click #make-comment' : 'makeComment',
-    'click #close-modal' : 'closeModal'
+    // 'click #close-modal' : 'closeModal'
   },
   
-  closeModal: function () {
-    $('div#show-view').css("display", "none")
-    this.remove();
-  },
+  // closeModal: function () {
+  //   $('div#show-view').css("display", "none")
+  //   this.remove();
+  // },
   
   
   makeComment: function (event) {
