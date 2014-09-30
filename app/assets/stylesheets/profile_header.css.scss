@@ -25,9 +25,21 @@
      background: #fff; 
    }
 }
+
+ul.user-counts-list li {
+  float: left;
+  list-style-type: none;
+}
+
+
+.row-fluid > * {
+  display: inline-block;
+}
+
+.row-fluid ul {
+}
     
-    
-  .profile-user {
+.profile-user {
   position: relative;
   max-width: 964px;
   min-height: 75px;

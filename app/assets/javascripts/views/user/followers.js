@@ -1,9 +1,10 @@
 PictureApp.Views.FollowersModal = Backbone.View.extend({
 	tagname: 'p',
-	template: 'this is the modal',
+	template: JST['user/followers'],
+	// template: 'this is the modal',
 	render: function () {
-		this.$el.html(this.template);
+		var content = this.template({user: this.model})
+		this.$el.html(content);
 		return this;
 	}
-	
 })

@@ -1,0 +1,7 @@
+
+<% user.followers.forEach(function(follower) { %>
+  <div class="follow-view">
+    <a href="#"><%= follower.username %></a>
+    <img src="<%= follower.avatar %>">
+  </div>
+<%  })%>
