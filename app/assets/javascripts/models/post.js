@@ -22,7 +22,7 @@ PictureApp.Models.Post = Backbone.Model.extend({
   parse: function (response) {
     if (response.comments) {
       this.comments().set(response.comments, {parse: true});
-			this.likes().set(response.comments, {parse: true});
+			this.likes().set(response.likes, {parse: true});
       delete response.comments;
     }
     return response;

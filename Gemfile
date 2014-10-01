@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+gem 'wikipedia-client'
+gem 'rest-client'
+gem 'addressable'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'filepicker-rails'

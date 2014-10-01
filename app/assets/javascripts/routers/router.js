@@ -83,6 +83,7 @@ PictureApp.Routers.Main = Backbone.Router.extend({
     var indexView = new PictureApp.Views.IndexView({
       model: user
     });
+		
 		this._swapView(indexView);
 	},
 

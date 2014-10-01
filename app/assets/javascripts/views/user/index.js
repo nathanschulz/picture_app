@@ -84,6 +84,7 @@ PictureApp.Views.IndexView = Backbone.View.extend({
 	render: function () {
 		var content = this.template({user: this.model});
 		this.$el.html(content);
+		// this.infiniScroll = new Backbone.InfiniScroll(this.model.posts(), {success: this.appendRender});
    	return this;
 	}
 })

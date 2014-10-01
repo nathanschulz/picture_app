@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PictureApp</title>
+  <title>инстиград</title>
   
   <%= stylesheet_link_tag    'application'%>
   <%= javascript_include_tag 'application'%>
@@ -12,7 +12,7 @@
   
   
   
-  <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"> -->
+
   
   
   <script 
@@ -28,19 +28,16 @@
 <body>
     
 
-  <input
-    type="hidden"
-    id="just-logged-in"
-    data-just-logged-in="true">  
   <input 
     id="current-user-id" 
-    type="hidden" 
+    type="hidden"
+    data-current-user-avatar="<%= current_user.avatar if current_user %>" 
     data-current-user-id="<%= current_user.id if current_user %>"
     data-current-user-name="<%= current_user.username if current_user %>">
    <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Instagrad</a>
+        <a href="#"><img src="/assets/logo.png"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

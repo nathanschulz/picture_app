@@ -105,9 +105,10 @@
 
 <div class="row">
 <% var item = 0 %>
+<% var row = 0%>
   <% user.posts().each(function(post){ %>
     <% if (item === 0) {%>
-      <div class="row">
+      <div class="row" id="<%= "row-" + row %>">
     <% } %>
     <div class="col-xs-3">
         <a class="thumbnail" href= "<%= post.get('filepicker_url') %>" title="Picture" data-id="<%= post.id %>">
@@ -117,6 +118,7 @@
     </div>
     <% if (item === 3) {%>
       </div>
+      <% row++ %>
     <% } %>
     <% item = (item + 1) % 4 %>
   <% }) %>

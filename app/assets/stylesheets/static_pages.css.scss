@@ -1,3 +1,67 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#carrousel {
+  position: relative;
+  height: 200px;
+  width: 400px;
+  margin: 100px auto 20px auto;
+  overflow: hidden;
+  border: 10px solid black;
+}
+
+#carrousel > ul {
+  left: 0px;
+  top: 0;
+  position: absolute;
+  list-style: none;
+}
+
+#carrousel > ul:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#carrousel > ul > li {
+  float: left;
+  width: 400px;
+  height: 200px;
+  background: blue;
+  font-size: 30px;
+  text-align: center;
+}
+
+#carrousel > ul > li:nth-child(even) {
+  background: green;
+}
+
+#carrousel-nav {
+  text-align: center;
+}
+
+#carrousel-nav > span {
+  cursor: pointer;
+}
+
+#carrousel-nav > span:hover {
+  text-decoration: underline;
+}
+
+
+.form-signin .btn-primary {
+  background-color: black;
+  border-color: black;
+}
+
+.form-signin .btn-primary:hover {
+  background-color: #ED1111;
+  border-color: #ED1111;
+}
+
+.account-wall img:hover {
+  
+}
