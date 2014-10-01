@@ -3,6 +3,7 @@ PictureApp.Views.IndexView = Backbone.View.extend({
   
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.model.posts(), 'add sync', this.render);
 		$('body').on('click', '#message-button', this.sendMessage.bind(this));
 		$('body').on('click', '#read-messages-button', this.readMessages.bind(this));
 	},

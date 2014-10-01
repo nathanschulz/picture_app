@@ -10,9 +10,10 @@ class Api::PostsController < ApplicationController
     
     if post.save
       render json: post
+      # redirect_to user_url(current_user.username)
     else
       flash[:errors] = post.errors.full_messages
-      redirect_to user_url(current_user)
+      redirect_to user_url(current_user.username)
     end
 
   end

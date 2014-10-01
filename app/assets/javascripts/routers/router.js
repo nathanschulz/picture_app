@@ -63,14 +63,55 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		Backbone.history.navigate('', {trigger: true})
 	},
 
+
+
 	upload: function () {
+		debugger
+		var modalView = new PictureApp.Views.UploadModal();
+		var modal = new Backbone.BootstrapModal({
+			content: modalView,
+			title: "Upload Photo",
+			animate: true
+		});
+		modal.open(function() {console.log('clicked modal')});
+		
+		//
+		// var userId = $('#user-id').data('user-id');
+		// var path = filepicker.pick(function(InkBlob){
+		// 	var newPicture = new PictureApp.Models.Post({
+		// 		post: {filepicker_url: InkBlob.url}
+		// 	});
+		// 	newPicture.save({}, {
+		// 		success: function () {
+		// 			PictureApp.Collections.users.getOrFetch(userId).posts().add(newPicture)
+		// 		}
+		// 	})
+		// })
+		//     Backbone.history.navigate('', {trigger: true});
+	},
+
+
+	// viewFollowers: function (event) {
+	// 	var modalView = new PictureApp.Views.FollowersModal({model: this.model});
+	// 	var modal = new Backbone.BootstrapModal({
+	// 		content: modalView,
+	// 		title: "Followers",
+	// 		animate: true
+	// 	})
+	// 	modal.open(function() {console.log('clicked modal')});
+	// },
+
+
+
+	upload1: function () {
+		var userId = $('#user-id').data('user-id');
 		var path = filepicker.pick(function(InkBlob){
 			var newPicture = new PictureApp.Models.Post({
 				post: {filepicker_url: InkBlob.url}
 			});
 			newPicture.save({}, {
 				success: function () {
-					// alert('congratulations!');
+					PictureApp.Collections.users.getOrFetch(userId).posts().add(newPicture)
 				}
 			})
 		})
