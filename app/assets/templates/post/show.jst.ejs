@@ -1,7 +1,7 @@
 <button type="button" class="close" id="close-modal">&times;</button>
 <div id="image-container">
 
-  <img src="<%= post.attributes.filepicker_url %>">
+  <img style="<%= "-webkit-filter: " + post.get('style')%>" src="<%= post.attributes.filepicker_url %>" class="main-image">
   <% if (post.likes()) { %>
     <%= post.likes().length %> likes.
   <% } %>
@@ -11,6 +11,20 @@
   <% } else { %>
    <a id="like-post">like</a>
   <% } %>
+  <table>
+    <tr>
+      <td><a class="style-button" data-style="sepia(1)">Sepia</a></td>
+      <td><a class="style-button" data-style="blur(2px)">Blur</a></td>
+      <td><a class="style-button" data-style="grayscale(.8)">Grayscale</a></td>
+      <td><a class="style-button" data-style="saturate(5)">Sepia</a></td>
+    </tr>
+    <tr>
+      <td><a class="style-button" data-style="invert(1)">Invert</a></td>
+      <td><a class="style-button" data-style="opacity(.5)">Translucent</a></td>
+      <td><a class="style-button" data-style="brightness(3)">Bright!</a></td>
+      <td><a class="style-button" data-style="contrast(4)">Contrast</a></td>
+    </tr>
+  </table>
 </div>
 
 <div class="detailBox">
@@ -26,7 +40,7 @@
        
             <li>
                 <div class="commenterImage">
-                  <img src="<%= comment.attributes.avatar %>" />
+                  <img src="<%= comment.attributes.avatar %>"/>
                 </div>
                 <div class="commentText">
                     <p class=""><%= comment.attributes.body %></p> <span class="date sub-text">by <%= comment.attributes.username %> on <%= comment.attributes.created_at.slice(0,10)%></span>
@@ -45,6 +59,7 @@
         </form>
     </div>
 </div>
+
 
 
 

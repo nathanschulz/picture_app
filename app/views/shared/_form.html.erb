@@ -1,51 +1,53 @@
-
-  <div id="carrousel">
-    <ul>
-      <li><!img src="/assets/soviet-poster.jpg"/></li>
-      <li><!img src="/assets/soviet-poster-2.jpg"/></li>
-      <li><!img src="/assets/soviet-poster-4.jpg"/>  </li>
-      <li><!img src="/assets/soviet-poster-6.jpg"/></li>
-      <li><!img src="/assets/soviet-poster-5.jpg"/></li>
-    </ul>
-  </div>
-  
-
-
-
-
-
-
-<% if purpose == "session" %>
-  <% button_label = "For the Motherland!" %>
-  <% form_action = session_url %>
-<% else %>
-  <% button_label = "Join us, comrade!" %>
-  <% form_action = users_url %>
-<% end %>
+<div id="front-page">
+  <% if purpose == "session" %>
+    <% button_label = "For the Motherland!" %>
+    <% submit_button = "Sign In"%>
+    <% form_action = session_url %>
+  <% else %>
+    <% button_label = "Join us, comrade!" %>
+    <% form_action = users_url %>
+    <% submit_button = "Sign Up"%>
+  <% end %>
 
 
 
 
 
 
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title"><%= button_label %></h1>
-            <div class="account-wall1">
-                <img class="profile-img" src="/assets/login_icon.png"
-                    alt="">
-                <form class="form-signin" action="<%= form_action %>" method="post">
-                  <input
-                       name="authenticity_token"
-                       type="hidden"
-                       value="<%= form_authenticity_token %>">
-                <input type="text" name="user[username]" class="form-control" placeholder="Username" required autofocus>
-                <input type="password" name="user[password]" class="form-control" placeholder="Password" required>
-                <button value="<%= button_label %>" class="btn btn-lg btn-primary btn-block" type="submit">
-                    Sign in</button>
-                </label>
+      <div class="row">
+          <div class="col-sm-6 col-md-4 col-md-offset-4">
+              <h1 class="text-center login-title"><%= button_label %></h1>
+              <div class="account-wall1">
+                  <img class="profile-img" src="/assets/login_icon.png"
+                      alt="">
+                  <form class="form-signin" action="<%= form_action %>" method="post">
+                    <input
+                         name="authenticity_token"
+                         type="hidden"
+                         value="<%= form_authenticity_token %>">
+                  <input type="text" name="user[username]" class="form-control" placeholder="Username" required autofocus>
+                  <input type="password" name="user[password]" class="form-control" placeholder="Password" required>
+                  <button value="<%= button_label %>" class="btn btn-lg btn-primary btn-block" type="submit"><%= submit_button %></button>
+                  </label>
 
-                </form>
-            </div>
-        </div>
-    </div>   
+                  </form>
+              </div>
+          </div>
+      </div>
+</div>    
+
+<script>  
+  jQuery( function( $ ) {
+      var images = [ "/assets/soviet-poster.jpg", "/assets/soviet-poster-2.jpg", "/assets/soviet-poster-4.jpg", "/assets/soviet-poster-6.jpg", "/assets/soviet-poster-5.jpg" ];
+      var currentImage = 0;
+
+      function changeBackground() {
+          $( 'body' ).css( { backgroundImage: 'url(' + images[ ++currentImage ] + ')' } );
+          if ( currentImage >= images.length - 1 ) {
+              currentImage -= images.length;
+          }
+      }
+      changeBackground();
+      setInterval( changeBackground, 3000 );  
+  });
+</script>   

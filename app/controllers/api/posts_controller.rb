@@ -15,12 +15,14 @@ class Api::PostsController < ApplicationController
       flash[:errors] = post.errors.full_messages
       redirect_to user_url(current_user.username)
     end
-
+  end
+  
+  def update
   end
   
   private
   def post_params
-    params.require(:post).permit(:filepicker_url, :comment)
+    params.require(:post).permit(:filepicker_url, :comment, :style)
   end
   
 end

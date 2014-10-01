@@ -2,54 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//
-//
-//#carrousel {
-//  position: relative;
-//  height: 200px;
-//  width: 400px;
-//  margin: 100px auto 20px auto;
-//  overflow: hidden;
-//  border: 10px solid black;
-//}
-//
-//#carrousel > ul {
-//  left: 0px;
-//  top: 0;
-//  position: absolute;
-//  list-style: none;
-//}
-//
-//#carrousel > ul:after {
-//  content: "";
-//  display: block;
-//  clear: both;
-//}
-//
-//#carrousel > ul > li {
-//  float: left;
-//  width: 400px;
-//  height: 200px;
-//  background: blue;
-//  font-size: 30px;
-//  text-align: center;
-//}
-//
-//#carrousel > ul > li:nth-child(even) {
-//  background: green;
-//}
-//
-//#carrousel-nav {
-//  text-align: center;
-//}
-//
-//#carrousel-nav > span {
-//  cursor: pointer;
-//}
-//
-//#carrousel-nav > span:hover {
-//  text-decoration: underline;
-//}
+#front-page {
+  height: 100vh;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+}
+
 
 .col-md-offset-4 {
   background: rgba(255, 230, 230, .5);

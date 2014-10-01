@@ -12,8 +12,15 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
   events: {
     'click #make-comment' : 'makeComment',
     'click #like-post' : 'likePost',
-		'click #unlike-post' : 'unlikePost'
+		'click #unlike-post' : 'unlikePost',
+		'click .style-button' : 'stylePost'
   },
+	
+	stylePost: function (event) {
+		var newStyle = $(event.currentTarget).data('style')
+		this.$('.main-image').css('-webkit-filter', newStyle)
+	},
+
 	
 	unlikePost: function(event) {
 		event.preventDefault();
