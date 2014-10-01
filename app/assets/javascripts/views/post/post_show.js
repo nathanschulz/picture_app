@@ -13,13 +13,32 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
     'click #make-comment' : 'makeComment',
     'click #like-post' : 'likePost',
 		'click #unlike-post' : 'unlikePost',
-		'click .style-button' : 'stylePost'
+		'click .style-button' : 'stylePost',
+		'click .unstyle-button' : 'unstylePost'
   },
-	
-	stylePost: function (event) {
-		var newStyle = $(event.currentTarget).data('style')
-		this.$('.main-image').css('-webkit-filter', newStyle)
+
+	unstylePost: function (event) {
+		var oldStyle = $(event.currentTarget).data('style');
+		$(event.currentTarget).removeClass('style-button');
+		$(event.currentTarget).addClass('unstyle-button');
+		var styleIndex = this.model.styleArray.indexOf(oldStyle)
+		this.model.styleArray.splice(styleIndex, 1);
+		this.updatePost();
 	},
+
+	stylePost: function (event) {
+		var newStyle = $(event.currentTarget).data('style');
+		$(event.currentTarget).removeClass('style-button');
+		$(event.currentTarget).addClass('unstyle-button');
+		this.$('.main-image').css('-webkit-filter', newStyle);
+		this.model.styleArray.push(newStyle);
+		this.updatePost();
+	},
+	
+	updatePost: function () {
+		var newStyle = this.model.styleArray.join(" ")
+		debugger
+	}
 
 	
 	unlikePost: function(event) {

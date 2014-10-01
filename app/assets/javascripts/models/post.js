@@ -18,12 +18,23 @@ PictureApp.Models.Post = Backbone.Model.extend({
 		}
 		return this._likes;
 	},
+	
+	generateStyleArray: function (styleString) {
+		if (!styleString) {
+			return []
+		} else {
+			var styleArray = styleString.split(/[ ,]+/);
+			return styleArray;
+		}
+	},
     
   parse: function (response) {
     if (response.comments) {
       this.comments().set(response.comments, {parse: true});
 			this.likes().set(response.likes, {parse: true});
-      delete response.comments;
+			this.styleArray = this.generateStyleArray(this.style);
+			delete response.likes;
+		  delete response.comments;
     }
     return response;
   }

@@ -109,8 +109,8 @@
       <div class="row" id="<%= "row-" + row %>">
     <% } %>
     <div class="col-xs-3">
-        <a class="thumbnail" href= "<%= post.get('filepicker_url') %>" title="Picture" data-id="<%= post.id %>" style="<%= post.get('style')%>">
-        <img src="<%= post.get('filepicker_url') %>" title="Picture">
+        <a class="thumbnail" href= "<%= post.get('filepicker_url') %>" title="Picture" data-id="<%= post.id %>" >
+        <img src="<%= post.get('filepicker_url') %>" title="<%= post.get('title')%>">
       </a>
       </a>
     </div>

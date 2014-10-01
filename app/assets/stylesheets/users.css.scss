@@ -15,6 +15,14 @@
   max-width: 80px;
 }
 
+.thumbnail img {
+  -webkit-filter: grayscale(0);
+}
+
+.thumbnail img:hover {
+  -webkit-filter: grayscale(1);
+}
+
 
 .img-polaroid {
   max-height: 100px;
