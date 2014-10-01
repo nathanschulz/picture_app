@@ -1,7 +1,7 @@
 
 
 
-json.(@post, :id, :likes, :user_id, :filepicker_url, :string, :created_at, :updated_at, :order, :comment)
+json.(@post, :id, :likes, :user_id, :filepicker_url, :string, :created_at, :updated_at, :order, :comment, :title)
 json.comments @post.comments do |comment|
   json.(comment, :body, :id, :created_at)
   json.avatar comment.user.avatar

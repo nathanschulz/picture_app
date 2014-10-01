@@ -1,5 +1,5 @@
-PictureApp.Views.UploadModal = Backbone.View.extend({
-	template: JST['upload/upload'],
+PictureApp.Views.ProfileModal = Backbone.View.extend({
+	template: JST['upload/profile'],
 	events: {
 		'click #select-picture' : 'makePost'
 	},

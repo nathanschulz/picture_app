@@ -1,5 +1,6 @@
 <button type="button" class="close" id="close-modal">&times;</button>
 <div id="image-container">
+
   <img src="<%= post.attributes.filepicker_url %>">
   <% if (post.likes()) { %>
     <%= post.likes().length %> likes.
@@ -14,10 +15,10 @@
 
 <div class="detailBox">
     <div class="titleBox">
-      <label>Comment Box</label>
+      <label><%= post.get('title') %></label>
     </div>
     <div class="commentBox"> 
-
+      <%= post.get('comment') %>
     </div>
     <div class="actionBox">
         <ul class="commentList">
@@ -44,3 +45,8 @@
         </form>
     </div>
 </div>
+
+
+
+
+

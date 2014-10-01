@@ -20,7 +20,7 @@ class Post < ActiveRecord::Base
   validates :user_id, presence: true
   
     #
-  # after_initialize :create_photo_description
+  before_create :create_photo_description
   
   # after_commit :ensure_order
   #
@@ -29,18 +29,19 @@ class Post < ActiveRecord::Base
   has_many :likes
   
   
-  # def create_photo_description
-  #   page = Wikipedia.find(self.comment).sanitized_content
-  #
-  #   if page
-  #     paragraph_ending = page.index('</p>')
-  #     self.comment = page[3...paragraph_ending]
-  #   else
-  #     self.comment = "No article found."
-  #   end
-  #
-  # end
-  
+  def create_photo_description
+    self.title = self.comment
+    page = Wikipedia.find(self.comment).sanitized_content
+
+    if page
+      paragraph_ending = page.index('</p>')
+      self.comment = page[3...paragraph_ending]
+    else
+      self.comment = "No article found."
+    end
+
+  end
+
   
   
   # def ensure_order

@@ -8,9 +8,34 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 		'' : 'index',
 		'upload' : 'upload',
 		'follow' : 'follow',
-		'unfollow': 'unfollow'
+		'unfollow': 'unfollow',
+		'avatar' : 'changeAvatar'
 	},
 	
+	changeAvatar: function () {
+		var modalView = new PictureApp.Views.ProfileModal();
+		var modal = new Backbone.BootstrapModal({
+			content: modalView,
+			title: "New Post",
+			animate: true,
+			okCloses: false,
+			cancelText: false,
+			okText: "Make Post!"
+		});
+		modal.open(function() {console.log('clicked modal')});
+	
+		modal.on('ok', function() {
+			var userId = $('#current-user-id').data('current-user-id');
+			if ($('#picture-url').val() !== "error") {
+				var user = PictureApp.Collections.users.getOrFetch(userId);
+				user.fetch({success: function() {
+					user.save({user: {avatar: $('#picture-url').val()}}, {patch: true});
+					}
+				})				
+			}
+			
+		})
+	},	
 	
 	follow: function () {
 		var newFollowing = this.createNewFollowing();
@@ -66,41 +91,34 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 
 
 	upload: function () {
-		debugger
 		var modalView = new PictureApp.Views.UploadModal();
 		var modal = new Backbone.BootstrapModal({
 			content: modalView,
-			title: "Upload Photo",
-			animate: true
+			title: "New Post",
+			animate: true,
+			okCloses: false,
+			cancelText: false,
+			okText: "Make Post!"
 		});
-		modal.open(function() {console.log('clicked modal')});
 		
-		//
-		// var userId = $('#user-id').data('user-id');
-		// var path = filepicker.pick(function(InkBlob){
-		// 	var newPicture = new PictureApp.Models.Post({
-		// 		post: {filepicker_url: InkBlob.url}
-		// 	});
-		// 	newPicture.save({}, {
-		// 		success: function () {
-		// 			PictureApp.Collections.users.getOrFetch(userId).posts().add(newPicture)
-		// 		}
-		// 	})
-		// })
-		//     Backbone.history.navigate('', {trigger: true});
+		modal.open(function() {console.log('clicked modal')});
+	
+		modal.on('ok', function() {
+			var userId = $('#user-id').data('user-id');
+			if ($('#picture-url').val() !== "error") {
+				var newPicture = new PictureApp.Models.Post({
+					post: {filepicker_url: $('#picture-url').val(),
+					comment: $('#picture-title').val()}
+				});
+				newPicture.save({}, {
+					success: function () {
+						PictureApp.Collections.users.getOrFetch(userId).posts().add(newPicture)
+					}
+				})
+			}
+			modal.close()
+		})
 	},
-
-
-	// viewFollowers: function (event) {
-	// 	var modalView = new PictureApp.Views.FollowersModal({model: this.model});
-	// 	var modal = new Backbone.BootstrapModal({
-	// 		content: modalView,
-	// 		title: "Followers",
-	// 		animate: true
-	// 	})
-	// 	modal.open(function() {console.log('clicked modal')});
-	// },
-
 
 
 	upload1: function () {

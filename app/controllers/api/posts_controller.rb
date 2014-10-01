@@ -20,7 +20,7 @@ class Api::PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:filepicker_url)
+    params.require(:post).permit(:filepicker_url, :comment)
   end
   
 end

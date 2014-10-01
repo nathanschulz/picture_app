@@ -35,7 +35,15 @@
 ////  background-image: url("splash.jpg") ;
 //}
 
+.modal .btn-primary {
+  background-color: black;
+  border-color: black;
+}
 
+.modal .btn-primary:hover {
+  background-color: #ED1111;
+  border-color: #ED1111;
+}
 
 
 div#new-message-view {

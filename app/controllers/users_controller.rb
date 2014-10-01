@@ -17,12 +17,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def update
-    @user = User.find_by_username(params[:id])
-    @message.update(user_params)
-    redirect_to user_url(@user.username)
-  end
-  
   def show
     @page_id = params[:id]
     @user = User.find_by_username(@page_id)
