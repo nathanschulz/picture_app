@@ -4,10 +4,10 @@ source 'https://rubygems.org'
 gem 'wikipedia-client'
 gem 'rest-client'
 gem 'addressable'
+gem 'newrelic_rpm'
 gem 'better_errors'
 gem 'binding_of_caller'
 gem 'filepicker-rails'
-gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro', github: 'laserlemon/figaro', ref: "9bbc7343f3916e73c185d071608e5ef24e9638d0"
 
