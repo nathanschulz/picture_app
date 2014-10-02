@@ -14,25 +14,22 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
     'click #like-post' : 'likePost',
 		'click #unlike-post' : 'unlikePost',
 		'click .style-button:not(.on)' : 'stylePost',
-		'click .style-button.on' : 'unstylePost'
+		// 'click .style-button.on' : 'unstylePost'
   },
 
 	unstylePost: function (event) {
-		console.log("unstyling")
-		var oldStyle = $(event.currentTarget).data('style');
-		$(event.currentTarget).removeClass('on');
-		// $(event.currentTarget).addClass('style-button');
-		var styleIndex = this.model.styleArray.indexOf(oldStyle)
-		this.model.styleArray.splice(styleIndex, 1);
-		this.updatePost();
+		// event.preventDefault();
+		// console.log("unstyling")
+		// var oldStyle = $(event.currentTarget).data('style');
+		// var styleIndex = this.model.styleArray.indexOf(oldStyle)
+		// this.model.styleArray.splice(styleIndex, 1);
+		// this.updatePost();
 	},
 
 	stylePost: function (event) {
+		event.preventDefault();
 		console.log('styling')
 		var newStyle = $(event.currentTarget).data('style');
-		// $(event.currentTarget).removeClass('style-button');
-		$(event.currentTarget).addClass('on');
-		// this.$('.main-image').css('-webkit-filter', newStyle);
 		this.model.styleArray.push(newStyle);
 		this.updatePost();
 	},
@@ -87,11 +84,12 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
   },
 	
 	updateButtons: function () {
+
 		if (this.model.styleArray) {
 			this.model.styleArray.forEach(function(style){
-				debugger
 	      var buttonClass = "." + style;
 	      $(buttonClass).addClass('on');
+				debugger
 	    })
 		}
 	},
