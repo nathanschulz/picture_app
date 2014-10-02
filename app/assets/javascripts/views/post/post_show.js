@@ -13,32 +13,34 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
     'click #make-comment' : 'makeComment',
     'click #like-post' : 'likePost',
 		'click #unlike-post' : 'unlikePost',
-		'click .style-button' : 'stylePost',
-		'click .unstyle-button' : 'unstylePost'
+		'click .style-button:not(.on)' : 'stylePost',
+		'click .style-button.on' : 'unstylePost'
   },
 
 	unstylePost: function (event) {
+		console.log("unstyling")
 		var oldStyle = $(event.currentTarget).data('style');
-		$(event.currentTarget).removeClass('style-button');
-		$(event.currentTarget).addClass('unstyle-button');
+		$(event.currentTarget).removeClass('on');
+		// $(event.currentTarget).addClass('style-button');
 		var styleIndex = this.model.styleArray.indexOf(oldStyle)
 		this.model.styleArray.splice(styleIndex, 1);
 		this.updatePost();
 	},
 
 	stylePost: function (event) {
+		console.log('styling')
 		var newStyle = $(event.currentTarget).data('style');
-		$(event.currentTarget).removeClass('style-button');
-		$(event.currentTarget).addClass('unstyle-button');
-		this.$('.main-image').css('-webkit-filter', newStyle);
+		// $(event.currentTarget).removeClass('style-button');
+		$(event.currentTarget).addClass('on');
+		// this.$('.main-image').css('-webkit-filter', newStyle);
 		this.model.styleArray.push(newStyle);
 		this.updatePost();
 	},
 	
 	updatePost: function () {
-		var newStyle = this.model.styleArray.join(" ")
-		debugger
-	}
+		var newStyle = this.model.styleArray.join(" ");
+		this.model.save({style: newStyle}, {patch: true});
+	},
 
 	
 	unlikePost: function(event) {
@@ -84,11 +86,25 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
      })
   },
 	
+	updateButtons: function () {
+		if (this.model.styleArray) {
+			this.model.styleArray.forEach(function(style){
+				debugger
+	      var buttonClass = "." + style;
+	      $(buttonClass).addClass('on');
+	    })
+		}
+	},
+	
   render: function () {
-    var content = this.template({post: this.model, userName: this.userName});
+    var content = this.template({
+			post: this.model, 
+			userName: this.userName
+		});
+		this.updateButtons();
     this.$el.html(content);
-    return this;
-  }
+		return this;
+	 }
 })
 
 
