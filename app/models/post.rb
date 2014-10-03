@@ -19,11 +19,7 @@ class Post < ActiveRecord::Base
   validates :filepicker_url, presence: true
   validates :user_id, presence: true
   
-    #
   before_create :create_photo_description
-  
-  # after_commit :ensure_order
-  #
   belongs_to :user
   has_many :comments
   has_many :likes
@@ -41,12 +37,5 @@ class Post < ActiveRecord::Base
     end
 
   end
-
-  
-  
-  # def ensure_order
- #    last_post = Post.order(:created_at).last
- #    self.order = (last_post.order ? (last_post.order + 1) : 0)
- #  end
   
 end

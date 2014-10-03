@@ -18,3 +18,18 @@ PictureApp.Collections.Posts = Backbone.Collection.extend({
 	}
 })
 PictureApp.Collections.posts = new PictureApp.Collections.Posts();
+
+
+
+
+this.collection.fetch({
+	remove: false,
+	data: {page: 1}
+})
+
+
+// parse: function(response) {
+// 	this.page = response.page;
+// 	this.total_pages = response.total_pages;
+// 	return response.models;
+// }

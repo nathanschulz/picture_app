@@ -20,13 +20,13 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 			animate: true,
 			okCloses: false,
 			cancelText: false,
-			okText: "Make Post!"
+			okText: "Make Post!" 
 		});
 		modal.open(function() {console.log('clicked modal')});
 	
 		modal.on('ok', function() {
-			var userId = $('#current-user-id').data('current-user-id');
-			if ($('#picture-url').val() !== "error") {
+			var userId = $('#current-user-id').data('current-user-id');  //this should be passed at backbone initialize
+			if ($('#picture-url').val() !== "error") { 
 				var user = PictureApp.Collections.users.getOrFetch(userId);
 				user.fetch({success: function() {
 					user.save({user: {avatar: $('#picture-url').val()}}, {patch: true});

@@ -89,7 +89,6 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
 			this.model.styleArray.forEach(function(style){
 	      var buttonClass = "." + style;
 	      $(buttonClass).addClass('on');
-				debugger
 	    })
 		}
 	},
@@ -99,7 +98,7 @@ PictureApp.Views.PostShowView = Backbone.View.extend({
 			post: this.model, 
 			userName: this.userName
 		});
-		this.updateButtons();
+		// this.updateButtons(); these buttons should be a subview
     this.$el.html(content);
 		return this;
 	 }
