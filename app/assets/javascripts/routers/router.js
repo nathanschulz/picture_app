@@ -38,6 +38,8 @@ PictureApp.Routers.Main = Backbone.Router.extend({
 	},	
 	
 	follow: function () {
+		var followerId = $('#current-user-id').data('current-user-id');
+		var followeeId = $('#user-id').data('user-id');
 		var newFollowing = this.createNewFollowing();
 		var that = this
 		newFollowing.save({}, {
