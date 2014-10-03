@@ -20,12 +20,12 @@ PictureApp.Collections.Posts = Backbone.Collection.extend({
 PictureApp.Collections.posts = new PictureApp.Collections.Posts();
 
 
-
-
-this.collection.fetch({
-	remove: false,
-	data: {page: 1}
-})
+//
+//
+// this.collection.fetch({
+// 	remove: false,
+// 	data: {page: 1}
+// })
 
 
 // parse: function(response) {
